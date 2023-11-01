@@ -1,0 +1,41 @@
+  <div class="row div">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Productname</th>
+              <th>quantity</th>
+              <th>price</th>
+              <th>describe</th>
+              <th>Picture</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="a" *ngFor="let s of Products | paginate:{itemsPerPage:5,currentPage:p}">
+              <td>{{ s.id }}</td>
+              <td class="pname">{{ s.Productname }}</td>
+              <td>{{ s.quantity }}</td>
+              <td>{{ s.price }}</td>
+              <td class="pname">{{ s.describe }}</td>
+              <td><img src="{{ s.imageurl }}" alt="" class="img"></td>
+              <td><button type="button" class="btn btn-primary" (click)="(s)">Edit</button></td>
+              <td><button type="button" class="btn btn-danger" >Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="div" text-decoration="none">
+          <pagination-controls (pageChange)="p = $event" class="a" text-decoration="none"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button type="button" class="btn btn-secondary"  label="Show" >Add new</button>
+    </div>
+  </div>

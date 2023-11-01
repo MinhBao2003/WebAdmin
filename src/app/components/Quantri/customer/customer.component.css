@@ -1,0 +1,104 @@
+.div{
+  text-align: center;
+}
+.a{
+  text-decoration: none;
+}
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+.dialog h2 {
+  margin-top: 0;
+}
+
+.dialog form {
+  margin-bottom: 0;
+}
+
+.dialog button {
+  margin-right: 10px;
+}
+
+.edit-customer-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.edit-customer-container h2 {
+  margin-top: 0;
+}
+
+.edit-customer-container form {
+  margin-top: 20px;
+}
+
+.edit-customer-container form div {
+  margin-bottom: 10px;
+}
+
+.edit-customer-container form label {
+  display: inline-block;
+  width: 100px;
+}
+
+.edit-customer-container form input[type="text"] {
+  width: 200px;
+}
+
+.edit-customer-container form button {
+  margin-top: 10px;
+}
+
+.edit-customer-container form button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+.edit-customer-container form button[type="button"] {
+  background-color: #ccc;
+}
+.x{
+  color:white;
+  font-size: 17px;
+}
+
+.confirmation-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.confirmation-form h2 {
+  margin-top: 0;
+}
+
+.confirmation-form p {
+  margin-bottom: 20px;
+}
+
+.confirmation-form button {
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+

@@ -1,0 +1,143 @@
+<!--loát dữ liệu api nodejs-->
+<div class="container">
+  <h1>{{ title }}</h1>
+
+  <div class="row div">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Picture</th>
+              <th>Age</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="a" *ngFor="let s of customers | paginate:{itemsPerPage:7,currentPage:p}">
+              <td>{{ s.id }}</td>
+              <td><img src="{{ s.picture }}" alt=""></td>
+              <td>{{ s.age }}</td>
+              <td>{{ s.name }}</td>
+              <td>{{ s.gender }}</td>
+              <td>{{ s.email }}</td>
+              <td>{{ s.phone }}</td>
+              <td><button type="button" class="btn btn-primary" (click)="editCustomer(s)">Edit</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="deleteProduct(s.id)">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="div" text-decoration="none">
+          <pagination-controls (pageChange)="p = $event" class="a" text-decoration="none"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating button for adding new customer -->
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button type="button" class="btn btn-secondary" (click)="showDialog()">Add new</button>
+    </div>
+  </div>
+
+  <!-- Dialog form for adding new customer -->
+  <div *ngIf="visible" class="dialog">
+    <h2>Add New Customer</h2>
+    <form [formGroup]="addProductForm" (ngSubmit)="addCustomer()">
+      <table class="table table-striped table-bordered">
+        <tr>
+          <td><label>Id</label></td>
+          <td><input type="number" formControlName="id" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td><label>Picture</label></td>
+          <td><input type="text" formControlName="picture" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td><label>Age</label></td>
+          <td><input type="number" formControlName="age" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td><label>Name</label></td>
+          <td><input type="text" formControlName="name" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td><label>Gender</label></td>
+          <td><input type="text" formControlName="gender" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td><label>Email</label></td>
+          <td><input type="email" formControlName="email" class="form-control" required></td>
+        </tr>
+        <tr>
+          <td><label>Phone</label></td>
+          <td><input type="number" formControlName="phone" class="form-control" required></td>
+        </tr>
+      </table>
+      <div class="div">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" (click)="visible = false">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Existing code -->
+
+<!-- Form for editing customer -->
+<div *ngIf="visibleEditForm" class="edit-customer-container">
+  <h2>Edit Customer</h2>
+  <form (ngSubmit)="saveCustomer()" [formGroup]="editForm">
+    <table class="table table-striped table-bordered">
+      <tr>
+        <td><label >ID:</label></td>
+        <td><input type="text" id="editId" formControlName="id" readonly></td>
+      </tr>
+      <tr>
+        <td><label for="editPicture">Picture:</label></td>
+        <td><input type="text" id="editPicture" formControlName="picture"></td>
+      </tr>
+      <tr>
+        <td><label for="editAge">Age:</label></td>
+        <td><input type="text" id="editAge" formControlName="age"></td>
+      </tr>
+      <tr>
+        <td><label for="editName">Name:</label></td>
+        <td><input type="text" id="editName" formControlName="name"></td>
+      </tr>
+      <tr>
+        <td><label for="editGender">Gender:</label></td>
+        <td><input type="text" id="editGender" formControlName="gender"></td>
+      </tr>
+      <tr>
+        <td><label for="editEmail">Email:</label></td>
+        <td><input type="text" id="editEmail" formControlName="email"></td>
+      </tr>
+      <tr>
+        <td><label for="editPhone">Phone:</label></td>
+        <td><input type="text" id="editPhone" formControlName="phone"></td>
+      </tr>
+    </table>
+    <div class="div">
+      <button type="submit" class="btn btn-success">Save</button>&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<!-- Existing code -->
+<!-- Biểu mẫu hộp thoại xác nhận xóa -->
+<div *ngIf="showDeleteConfirmation" class="confirmation-form">
+  <h2 class="div">Xác nhận xóa</h2>
+  <p class="div">Bạn có chắc chắn muốn xóa sản phẩm này?</p>
+  <div class="div">
+    <button type="button" class="btn btn-danger" (click)="confirmDelete()">Xóa</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelDelete()">Hủy</button>
+  </div>
+</div>
